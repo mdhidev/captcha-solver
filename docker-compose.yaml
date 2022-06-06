@@ -1,0 +1,17 @@
+version: "3"
+services:
+    captcha-solver:
+        build:
+            context: ./
+        restart: "always"
+        ports:
+            - "8000"
+        environment:
+            - VIRTUAL_HOST=captcha-solver.mdhi.dev
+            - VIRTUAL_PORT=8000
+        networks:
+            - proxy
+networks:
+  proxy:
+    external:
+      name: nginx-proxy_nginx-proxy
